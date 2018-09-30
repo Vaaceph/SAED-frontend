@@ -1,0 +1,20 @@
+<div *ngIf="currentFileUpload" class="progress">
+  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+    aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+    {{progress.percentage}}%</div>
+</div>
+
+<label class="btn btn-default">
+  <input type="file" accept=".txt" (change)="selectFile($event)">
+</label>
+
+<button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+
+<br>
+<br>
+<div style="color:red;">Pricing: € 0.25 per file.</div><div style="color:green;"> First 3 uploads are free!!</div>
+<div *ngIf="fileUploadsCount > 3">
+  <h2> Billing : € {{totalBill}}</h2>
+</div>
+  <p style="display:inline-block;"> Total Number of Files Uploaded :</p>
+  <div style="display:inline-block;">{{fileUploadsCount}}</div>
